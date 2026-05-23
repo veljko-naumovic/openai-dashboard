@@ -1,4 +1,4 @@
-import DashboardStats from "@/features/dashboard/components/DashboardStats";
+import DashboardStats from "@/features/dashboard/components/DashboardStats/DashboardStats";
 
 export default function DashboardPage() {
 	return (
