@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.scss";
+import QueryProvider from "@/providers/QueryProvider";
 
 type RootLayoutProps = Readonly<{
 	children: React.ReactNode;
@@ -7,13 +8,15 @@ type RootLayoutProps = Readonly<{
 
 export const metadata: Metadata = {
 	title: "OpenAI Dashboard",
-	description: "AI analytics dashboard built with Next.js 15 and React 19",
+	description: "AI analytics dashboard",
 };
 
 export default function RootLayout({ children }: RootLayoutProps) {
 	return (
 		<html lang="en">
-			<body>{children}</body>
+			<body>
+				<QueryProvider>{children}</QueryProvider>
+			</body>
 		</html>
 	);
 }
