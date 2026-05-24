@@ -1,3 +1,7 @@
+"use client";
+
+import { useState } from "react";
+
 import Sidebar from "../Sidebar/Sidebar";
 import Header from "../Header/Header";
 
@@ -8,12 +12,17 @@ type DashboardLayoutProps = Readonly<{
 }>;
 
 export default function DashboardLayout({ children }: DashboardLayoutProps) {
+	const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
 	return (
 		<div className={styles.layout}>
-			<Sidebar />
+			<Sidebar
+				isOpen={isSidebarOpen}
+				onClose={() => setIsSidebarOpen(false)}
+			/>
 
 			<div className={styles.content}>
-				<Header />
+				<Header onMenuClick={() => setIsSidebarOpen(true)} />
 
 				<main className={styles.main}>{children}</main>
 			</div>
