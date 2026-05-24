@@ -2,10 +2,13 @@
 
 import { useQuery } from "@tanstack/react-query";
 
+import { getDashboardStats } from "../../api/dashboard.api";
+
 import StatsCard from "@/components/ui/StatsCard/StatsCard";
 
+import StatsCardSkeleton from "../StatsCardSkeleton/StatsCardSkeleton";
+
 import styles from "./DashboardStats.module.scss";
-import { getDashboardStats } from "../../api/dashboard.api";
 
 export default function DashboardStats() {
 	const { data, isLoading } = useQuery({
@@ -14,7 +17,13 @@ export default function DashboardStats() {
 	});
 
 	if (isLoading) {
-		return <div>Loading stats...</div>;
+		return (
+			<div className={styles.grid}>
+				{Array.from({ length: 4 }).map((_, index) => (
+					<StatsCardSkeleton key={index} />
+				))}
+			</div>
+		);
 	}
 
 	return (
