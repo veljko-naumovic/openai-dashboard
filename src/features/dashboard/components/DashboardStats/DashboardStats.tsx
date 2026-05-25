@@ -1,30 +1,18 @@
 "use client";
 
-import { useQuery } from "@tanstack/react-query";
+import { useSuspenseQuery } from "@tanstack/react-query";
 
 import { getDashboardStats } from "../../api/dashboard.api";
 
 import StatsCard from "@/components/ui/StatsCard/StatsCard";
 
-import StatsCardSkeleton from "../StatsCardSkeleton/StatsCardSkeleton";
-
 import styles from "./DashboardStats.module.scss";
 
 export default function DashboardStats() {
-	const { data, isLoading } = useQuery({
+	const { data } = useSuspenseQuery({
 		queryKey: ["dashboard-stats"],
 		queryFn: getDashboardStats,
 	});
-
-	if (isLoading) {
-		return (
-			<div className={styles.grid}>
-				{Array.from({ length: 4 }).map((_, index) => (
-					<StatsCardSkeleton key={index} />
-				))}
-			</div>
-		);
-	}
 
 	return (
 		<div className={styles.grid}>
