@@ -2,7 +2,7 @@
 
 import { useSuspenseQuery } from "@tanstack/react-query";
 
-import { getDashboardStats } from "../../api/dashboard.api";
+import { getDashboardStats } from "@/services/dashboard.service";
 
 import StatsCard from "@/components/ui/StatsCard/StatsCard";
 
