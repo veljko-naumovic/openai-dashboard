@@ -1,0 +1,18 @@
+.card {
+    flex: 1 1 500px;
+    background-color: #111827;
+    border: 1px solid #1f2937;
+    border-radius: 16px;
+    padding: 24px;
+}
+
+.header {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 24px;
+}
+
+.content {
+    width: 100%;
+    min-width: 0;
+}

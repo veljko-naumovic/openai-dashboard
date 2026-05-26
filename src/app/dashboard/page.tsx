@@ -4,9 +4,10 @@ import DashboardStats from "@/features/dashboard/components/DashboardStats/Dashb
 
 import DashboardStatsFallback from "@/features/dashboard/components/DashboardStatsFallback/DashboardStatsFallback";
 
-import AnalyticsChart from "@/features/dashboard/components/AnalyticsChart/AnalyticsChart";
+import AnalyticsGrid from "@/features/dashboard/components/AnalyticsGrid/AnalyticsGrid";
 
 import ModelsUsageServer from "@/features/dashboard/components/ModelsUsageServer/ModelsUsageServer";
+
 import ModelsUsageFallback from "@/features/dashboard/components/ModelsUsageFallback/ModelsUsageFallback";
 
 export default function DashboardPage() {
@@ -18,7 +19,7 @@ export default function DashboardPage() {
 				<DashboardStats />
 			</Suspense>
 
-			<AnalyticsChart />
+			<AnalyticsGrid />
 
 			<Suspense fallback={<ModelsUsageFallback />}>
 				<ModelsUsageServer />
