@@ -6,6 +6,9 @@ import DashboardStatsFallback from "@/features/dashboard/components/DashboardSta
 
 import AnalyticsChart from "@/features/dashboard/components/AnalyticsChart/AnalyticsChart";
 
+import ModelsUsageServer from "@/features/dashboard/components/ModelsUsageServer/ModelsUsageServer";
+import ModelsUsageFallback from "@/features/dashboard/components/ModelsUsageFallback/ModelsUsageFallback";
+
 export default function DashboardPage() {
 	return (
 		<div>
@@ -16,6 +19,10 @@ export default function DashboardPage() {
 			</Suspense>
 
 			<AnalyticsChart />
+
+			<Suspense fallback={<ModelsUsageFallback />}>
+				<ModelsUsageServer />
+			</Suspense>
 		</div>
 	);
 }
