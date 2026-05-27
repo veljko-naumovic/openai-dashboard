@@ -1,5 +1,9 @@
 import { Suspense } from "react";
 
+import PageHeader from "@/components/ui/PageHeader/PageHeader";
+
+import DashboardSection from "@/components/ui/DashboardSection/DashboardSection";
+
 import { DashboardProvider } from "@/features/dashboard/context/DashboardContext";
 
 import DashboardFilters from "@/features/dashboard/components/DashboardFilters/DashboardFilters";
@@ -18,19 +22,27 @@ export default function DashboardPage() {
 	return (
 		<DashboardProvider>
 			<div>
-				<h1>Dashboard Overview</h1>
+				<PageHeader
+					title="Dashboard Overview"
+					description="Monitor OpenAI usage, requests, tokens, and AI analytics."
+					actions={<DashboardFilters />}
+				/>
 
-				<DashboardFilters />
+				<DashboardSection>
+					<Suspense fallback={<DashboardStatsFallback />}>
+						<DashboardStats />
+					</Suspense>
+				</DashboardSection>
 
-				<Suspense fallback={<DashboardStatsFallback />}>
-					<DashboardStats />
-				</Suspense>
+				<DashboardSection title="Analytics">
+					<AnalyticsGrid />
+				</DashboardSection>
 
-				<AnalyticsGrid />
-
-				<Suspense fallback={<ModelsUsageFallback />}>
-					<ModelsUsageServer />
-				</Suspense>
+				<DashboardSection title="AI Models">
+					<Suspense fallback={<ModelsUsageFallback />}>
+						<ModelsUsageServer />
+					</Suspense>
+				</DashboardSection>
 			</div>
 		</DashboardProvider>
 	);
