@@ -4,14 +4,19 @@ import { useSuspenseQuery } from "@tanstack/react-query";
 
 import { getDashboardStats } from "@/services/dashboard.service";
 
+import { useDashboardContext } from "../../context/DashboardContext";
+
 import StatsCard from "@/components/ui/StatsCard/StatsCard";
 
 import styles from "./DashboardStats.module.scss";
 
 export default function DashboardStats() {
+	const { range } = useDashboardContext();
+
 	const { data } = useSuspenseQuery({
-		queryKey: ["dashboard-stats"],
-		queryFn: getDashboardStats,
+		queryKey: ["dashboard-stats", range],
+
+		queryFn: () => getDashboardStats(),
 	});
 
 	return (
