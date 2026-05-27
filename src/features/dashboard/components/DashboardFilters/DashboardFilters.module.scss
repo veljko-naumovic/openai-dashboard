@@ -1,8 +1,16 @@
+.wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: 24px;
+    flex-wrap: wrap;
+}
+
 .filters {
     display: flex;
     align-items: center;
     gap: 12px;
-    margin-top: 24px;
 }
 
 .button {
@@ -16,6 +24,7 @@
 
     &:hover {
         border-color: #2563eb;
+
         color: white;
     }
 }

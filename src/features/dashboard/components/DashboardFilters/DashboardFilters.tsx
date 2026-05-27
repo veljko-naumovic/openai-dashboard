@@ -5,6 +5,8 @@ import {
 	useDashboardContext,
 } from "../../context/DashboardContext";
 
+import RefreshButton from "../RefreshButton/RefreshButton";
+
 import styles from "./DashboardFilters.module.scss";
 
 const FILTERS: {
@@ -29,18 +31,22 @@ export default function DashboardFilters() {
 	const { range, setRange } = useDashboardContext();
 
 	return (
-		<div className={styles.filters}>
-			{FILTERS.map((filter) => (
-				<button
-					key={filter.value}
-					className={`${styles.button} ${
-						range === filter.value ? styles.active : ""
-					}`}
-					onClick={() => setRange(filter.value)}
-				>
-					{filter.label}
-				</button>
-			))}
+		<div className={styles.wrapper}>
+			<div className={styles.filters}>
+				{FILTERS.map((filter) => (
+					<button
+						key={filter.value}
+						className={`${styles.button} ${
+							range === filter.value ? styles.active : ""
+						}`}
+						onClick={() => setRange(filter.value)}
+					>
+						{filter.label}
+					</button>
+				))}
+			</div>
+
+			<RefreshButton />
 		</div>
 	);
 }

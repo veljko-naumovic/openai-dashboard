@@ -17,8 +17,9 @@ export default function DashboardStats() {
 		queryKey: ["dashboard-stats", range],
 
 		queryFn: () => getDashboardStats(),
-	});
 
+		refetchInterval: 10000,
+	});
 	return (
 		<div className={styles.grid}>
 			<StatsCard
