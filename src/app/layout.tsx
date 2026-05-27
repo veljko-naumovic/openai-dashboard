@@ -3,7 +3,6 @@ import type { Metadata } from "next";
 import "./globals.scss";
 
 import QueryProvider from "@/providers/QueryProvider";
-
 import ThemeProvider from "@/providers/ThemeProvider";
 
 type RootLayoutProps = Readonly<{
@@ -17,7 +16,26 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: RootLayoutProps) {
 	return (
-		<html lang="en">
+		<html lang="en" suppressHydrationWarning>
+			<head>
+				<script
+					dangerouslySetInnerHTML={{
+						__html: `
+							(function() {
+								try {
+									const theme = localStorage.getItem("theme") || "dark";
+
+									document.documentElement.setAttribute(
+										"data-theme",
+										theme
+									);
+								} catch (e) {}
+							})();
+						`,
+					}}
+				/>
+			</head>
+
 			<body>
 				<ThemeProvider>
 					<QueryProvider>{children}</QueryProvider>

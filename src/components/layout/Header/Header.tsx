@@ -1,9 +1,17 @@
 "use client";
 
+import dynamic from "next/dynamic";
+
 import { Menu } from "lucide-react";
 
 import styles from "./Header.module.scss";
-import ThemeToggle from "@/components/ui/ThemeToggle/ThemeToggle";
+
+const ThemeToggle = dynamic(
+	() => import("@/components/ui/ThemeToggle/ThemeToggle"),
+	{
+		ssr: false,
+	},
+);
 
 type HeaderProps = {
 	onMenuClick: () => void;

@@ -6,7 +6,6 @@ type Theme = "dark" | "light";
 
 type ThemeContextType = {
 	theme: Theme;
-
 	toggleTheme: () => void;
 };
 
@@ -17,15 +16,13 @@ type ThemeProviderProps = Readonly<{
 }>;
 
 export default function ThemeProvider({ children }: ThemeProviderProps) {
-	const [theme, setTheme] = useState<Theme>("dark");
-
-	useEffect(() => {
-		const savedTheme = localStorage.getItem("theme") as Theme | null;
-
-		if (savedTheme) {
-			setTheme(savedTheme);
+	const [theme, setTheme] = useState<Theme>(() => {
+		if (typeof window === "undefined") {
+			return "dark";
 		}
-	}, []);
+
+		return (localStorage.getItem("theme") as Theme) || "dark";
+	});
 
 	useEffect(() => {
 		document.documentElement.setAttribute("data-theme", theme);
