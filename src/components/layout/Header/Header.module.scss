@@ -1,36 +1,23 @@
 .header {
     height: 70px;
-
-    border-bottom: 1px solid #1f2937;
-
+    border-bottom: 1px solid var(--border-color);
     display: flex;
-
     align-items: center;
-
     justify-content: space-between;
-
     padding: 0 24px;
-
-    background-color: #0f172a;
+    background-color: var(--background);
 }
-
 .left {
     display: flex;
-
     align-items: center;
-
     gap: 12px;
 }
 
 .menuButton {
     display: none;
-
     background: transparent;
-
     border: none;
-
     color: white;
-
     cursor: pointer;
 
     @media (max-width: 768px) {

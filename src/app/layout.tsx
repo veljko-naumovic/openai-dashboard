@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
+
 import "./globals.scss";
+
 import QueryProvider from "@/providers/QueryProvider";
+
+import ThemeProvider from "@/providers/ThemeProvider";
 
 type RootLayoutProps = Readonly<{
 	children: React.ReactNode;
@@ -15,7 +19,9 @@ export default function RootLayout({ children }: RootLayoutProps) {
 	return (
 		<html lang="en">
 			<body>
-				<QueryProvider>{children}</QueryProvider>
+				<ThemeProvider>
+					<QueryProvider>{children}</QueryProvider>
+				</ThemeProvider>
 			</body>
 		</html>
 	);

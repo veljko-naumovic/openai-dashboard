@@ -14,9 +14,9 @@
 }
 
 .button {
-    background-color: #111827;
-    border: 1px solid #1f2937;
-    color: #9ca3af;
+    background-color: var(--card-background);
+    border: 1px solid var(--border-color);
+    color: var(--muted-text);
     padding: 10px 16px;
     border-radius: 10px;
     cursor: pointer;
