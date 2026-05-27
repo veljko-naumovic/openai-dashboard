@@ -10,14 +10,21 @@ import {
 } from "recharts";
 
 import ChartCard from "@/components/ui/ChartCard/ChartCard";
-import { analyticsData } from "@/features/mock/analytics.data";
+
+import { useDashboardContext } from "../../context/DashboardContext";
+
+import { generateAnalyticsData } from "../../utils/generateAnalyticsData";
 
 export default function RequestsChart() {
+	const { range } = useDashboardContext();
+
+	const data = generateAnalyticsData(range);
+
 	return (
-		<ChartCard title="Weekly Requests">
+		<ChartCard title={`Requests (${range})`}>
 			<ResponsiveContainer width="100%" height={320}>
-				<LineChart data={analyticsData}>
-					<XAxis dataKey="day" />
+				<LineChart data={data}>
+					<XAxis dataKey="label" />
 
 					<YAxis />
 
@@ -25,7 +32,7 @@ export default function RequestsChart() {
 
 					<Line
 						type="monotone"
-						dataKey="requests"
+						dataKey="value"
 						stroke="#3b82f6"
 						strokeWidth={3}
 					/>

@@ -11,35 +11,20 @@ import {
 
 import ChartCard from "@/components/ui/ChartCard/ChartCard";
 
-const data = [
-	{
-		day: "Mon",
-		tokens: 120000,
-	},
-	{
-		day: "Tue",
-		tokens: 180000,
-	},
-	{
-		day: "Wed",
-		tokens: 90000,
-	},
-	{
-		day: "Thu",
-		tokens: 240000,
-	},
-	{
-		day: "Fri",
-		tokens: 160000,
-	},
-];
+import { useDashboardContext } from "../../context/DashboardContext";
+
+import { generateAnalyticsData } from "../../utils/generateAnalyticsData";
 
 export default function TokensChart() {
+	const { range } = useDashboardContext();
+
+	const data = generateAnalyticsData(range);
+
 	return (
-		<ChartCard title="Token Usage">
+		<ChartCard title={`Token Usage (${range})`}>
 			<ResponsiveContainer width="100%" height={320}>
 				<AreaChart data={data}>
-					<XAxis dataKey="day" />
+					<XAxis dataKey="label" />
 
 					<YAxis />
 
@@ -47,7 +32,7 @@ export default function TokensChart() {
 
 					<Area
 						type="monotone"
-						dataKey="tokens"
+						dataKey="value"
 						stroke="#10b981"
 						fill="#10b981"
 						fillOpacity={0.2}
