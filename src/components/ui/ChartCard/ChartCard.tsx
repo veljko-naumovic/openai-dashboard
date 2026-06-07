@@ -7,7 +7,7 @@ type ChartCardProps = Readonly<{
 
 export default function ChartCard({ title, children }: ChartCardProps) {
 	return (
-		<div className={styles.card}>
+		<div className={`${styles.card} dashboard-card`}>
 			<div className={styles.header}>{title}</div>
 
 			<div className={styles.content}>{children}</div>

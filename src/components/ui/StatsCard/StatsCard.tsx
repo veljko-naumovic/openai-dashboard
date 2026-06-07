@@ -7,7 +7,7 @@ type StatsCardProps = {
 
 export default function StatsCard({ title, value }: StatsCardProps) {
 	return (
-		<div className={styles.card}>
+		<div className={`${styles.card} dashboard-card`}>
 			<p className={styles.title}>{title}</p>
 
 			<h2 className={styles.value}>{value}</h2>

@@ -10,6 +10,16 @@
   --muted-text: #6b7280;
 
   --primary: #2563eb;
+
+  --radius-md: 12px;
+
+  --radius-lg: 16px;
+
+  --spacing-md: 16px;
+
+  --spacing-lg: 24px;
+
+  --spacing-xl: 32px;
 }
 
 [data-theme="dark"] {
@@ -17,7 +27,7 @@
 
   --foreground: #ffffff;
 
-  --card-background: var(--card-background);
+  --card-background: #111827;
 
   --border-color: #1f2937;
 
@@ -58,4 +68,14 @@ button,
 input,
 textarea {
   font: inherit;
+}
+
+.dashboard-card {
+  background-color: var(--card-background);
+
+  border: 1px solid var(--border-color);
+
+  border-radius: var(--radius-lg);
+
+  padding: var(--spacing-lg);
 }
