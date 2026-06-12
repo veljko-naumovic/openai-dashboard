@@ -6,7 +6,6 @@ export default function AnalyticsGrid() {
 	return (
 		<div className={styles.grid}>
 			<RequestsChart />
-
 			<TokensChart />
 		</div>
 	);
