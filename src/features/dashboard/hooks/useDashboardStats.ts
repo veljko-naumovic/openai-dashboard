@@ -12,8 +12,8 @@ export function useDashboardStats() {
 	return useSuspenseQuery({
 		queryKey: ["dashboard-stats", range],
 
-		queryFn: () => getDashboardStats(),
+		queryFn: () => getDashboardStats(range),
 
-		refetchInterval: 10000,
+		staleTime: 1000 * 60,
 	});
 }

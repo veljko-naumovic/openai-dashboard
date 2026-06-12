@@ -1,10 +1,19 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
 import styles from "./LastUpdated.module.scss";
 
 export default function LastUpdated() {
-	const [time] = useState(() => new Date().toLocaleTimeString());
+	const [time, setTime] = useState("");
+
+	useEffect(() => {
+		setTime(new Date().toLocaleTimeString());
+	}, []);
+
+	if (!time) {
+		return null;
+	}
 
 	return (
 		<div className={styles.container}>
