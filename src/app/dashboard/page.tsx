@@ -1,3 +1,4 @@
+import React from "react";
 import { Suspense } from "react";
 
 import PageHeader from "@/components/ui/PageHeader/PageHeader";
@@ -17,6 +18,7 @@ import AnalyticsGrid from "@/features/dashboard/components/AnalyticsGrid/Analyti
 import ModelsUsageServer from "@/features/dashboard/components/ModelsUsageServer/ModelsUsageServer";
 
 import ModelsUsageFallback from "@/features/dashboard/components/ModelsUsageFallback/ModelsUsageFallback";
+import LastUpdated from "@/components/ui/LastUpdated/LastUpdated";
 
 export default function DashboardPage() {
 	return (
@@ -25,7 +27,13 @@ export default function DashboardPage() {
 				<PageHeader
 					title="Dashboard Overview"
 					description="Monitor OpenAI usage, requests, tokens, and AI analytics."
-					actions={<DashboardFilters />}
+					actions={
+						<>
+							<LastUpdated />
+
+							<DashboardFilters />
+						</>
+					}
 				/>
 
 				<DashboardSection>
